@@ -1,0 +1,36 @@
+.myPosts{
+   padding: 10px;
+}
+.posts{
+   margin-top: 10px;
+}
+.postAdd textarea{
+   border: none;
+   border-radius: 5px;
+   width: 200px;
+   height: 100px;
+   padding: 10px;
+}
+.postsTitle{
+   margin-bottom: 10px;
+}
+.postAddBtn{
+   margin-top: 5px;
+
+
+
+}
+.addBtn{
+   color: #ffffff;
+   padding: 7px 10px;
+   border: none;
+   border-radius: 10px;
+   background: #036518;
+   transition: background .5s;
+
+}
+.addBtn:hover{
+   background: #039b24;
+   cursor: pointer;
+}
+

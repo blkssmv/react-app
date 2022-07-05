@@ -1,0 +1,26 @@
+.nav {
+   grid-area: n;
+   background-color: #217cdc;
+   text-align: center;
+   padding: 30px;
+   font-family: 'Montserrat', sans-serif;
+   border-radius: 10px;
+}
+.item, .itemFriend{
+   color: #ffffff;
+   margin: 10px;
+   padding: 5px 20px;
+   transition: background .5s;
+   border-radius: 5px;
+}
+.item:hover, .itemFriend:hover{
+   background: #003b79;
+}
+
+a{
+   text-decoration: none;
+}
+
+.activeLink{
+   color: #7bb2f3;
+}

@@ -1,0 +1,26 @@
+*{
+  box-sizing: border-box;
+}
+
+
+.app-wrapper{
+  padding: 20px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-areas: 
+  'h h'
+  'n c';
+  grid-template-rows: 60px 1fr;
+  grid-template-columns: 2fr 10fr;
+  grid-gap: 10px;
+}
+
+.app-wrapper-content{
+  grid-area: c;
+  background-color: #c6c6c6;
+  border-radius: 10px;
+}
+
+
+

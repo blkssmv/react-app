@@ -1,0 +1,10 @@
+.friend{
+   margin-right: 5px;
+}
+.friend:last-child{
+   margin-right: 0;
+}
+.friendAvatar img{
+   width: 25px;
+   border-radius: 50%;
+}
