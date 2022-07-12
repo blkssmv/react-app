@@ -7,13 +7,15 @@ import React from "react";
 
 const Dialogs = (props) => {
     let state = props.dialogsPage
-    let dialogElements = state.dialogsData.map((dialog, index) => {
-        return <DialogItem key={index} name={dialog.name} id={dialog.id}/>;
+    let dialogElements = state.dialogsData.map(dialog => {
+        return <DialogItem key={dialog.id} name={dialog.name} id={dialog.id}/>;
     });
 
-    let messageElements = state.messagesData.map((msg, index) => {
-        return <Message key={index} message={msg.message}/>;
+    let messageElements = state.messagesData.map(msg => {
+        return <Message key={msg.id} message={msg.message}/>;
     });
+
+    let newMessageText = state.newMessageText
 
     let sendMessage = () => {
         props.sendMessage()
@@ -30,7 +32,7 @@ const Dialogs = (props) => {
             <div className={classes.messages}>
                 <div>{messageElements}</div>
                 <div className={classes.myMessage}>
-                    <div><textarea onChange={onNewMessageChange} value={props.newMessageText} placeholder="Enter your message"/></div>
+                    <div><textarea onChange={onNewMessageChange} value={newMessageText} placeholder="Enter your message"/></div>
                     <div><button onClick={sendMessage}>Send</button></div>
                 </div>
             </div>
