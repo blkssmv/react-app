@@ -13,12 +13,12 @@
    transition: background .5s;
    border-radius: 5px;
 }
-.item:hover, .itemFriend:hover{
-   background: #003b79;
-}
 
 a{
    text-decoration: none;
+}
+a:hover{
+   color: #7bb2f3;
 }
 
 .activeLink{
