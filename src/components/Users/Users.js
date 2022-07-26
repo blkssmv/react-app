@@ -1,6 +1,8 @@
 import classes from "./Users.module.css";
 import userPhoto from "../../assets/images/users-vector-icon-png_260862.jpeg";
 import React from "react";
+import {NavLink} from "react-router-dom";
+import axios from "axios";
 
 const Users = (props) => {
 
@@ -26,14 +28,10 @@ const Users = (props) => {
             </div>
             <div className={classes.pageNumbers}>
                 <span className={classes.goFirstPage} onClick={() => props.goToPage(pages[0])}>&lt;&lt;</span>
-                <span className={classes.goToPage}
-                      onClick={() => props.goOnePageBack(props.currentPage - 1)}>&lt;</span>
                 {slicedPages.map((p, index) => (
                     <span onClick={() => props.onPageChanged(p)} key={index}
                           className={props.currentPage === p ? [classes.selectedPage, classes.pageNumber].join(' ') : classes.pageNumber}> {p} </span>
                 ))}
-                <span className={classes.goToPage}
-                      onClick={() => props.goOnePageForward(props.currentPage + 1)}>&gt;</span>
                 <span className={classes.goLastPage}
                       onClick={() => props.goToPage(pages[pages.length - 1])}>&gt;&gt;</span>
             </div>
@@ -42,14 +40,41 @@ const Users = (props) => {
                     <div key={u.id} className={classes.user}>
                         <div className={classes.avatar}>
                             <div>
-                                <img src={u.photos.small != null || undefined ? u.photos.small : userPhoto} alt=""
-                                     className={classes.userPhoto}/>
+                                <NavLink to={`/profile/` + u.id}>
+                                    <img src={u.photos.small != null || undefined ? u.photos.small : userPhoto} alt=""
+                                         className={classes.userPhoto}/>
+                                </NavLink>
                             </div>
                             <div>
                                 {u.followed ? <button className={classes.unfollow} onClick={() => {
-                                    props.unfollow(u.id)
+                                    axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
+                                            withCredentials: true,
+                                            headers: {
+                                                "API-KEY": "3c4813c9-0a0b-4495-826b-3e6a66feecf2"
+                                            }
+                                        }
+                                    ).then(res => {
+                                        if (res.data.resultCode === 0) {
+                                            props.unfollow(u.id)
+                                        }
+                                    })
+
+
                                 }}>Unfollow</button> : <button className={classes.follow} onClick={() => {
-                                    props.follow(u.id)
+
+                                    axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {
+                                        withCredentials: true,
+                                        headers: {
+                                            "API-KEY": "3c4813c9-0a0b-4495-826b-3e6a66feecf2"
+                                        }
+                                    })
+                                        .then(res => {
+                                            if (res.data.resultCode === 0) {
+                                                props.follow(u.id)
+                                            }
+                                        })
+
+
                                 }}>Follow</button>}
                             </div>
                         </div>

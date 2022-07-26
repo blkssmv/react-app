@@ -17,13 +17,6 @@
 .header_logo img {
     width: 60px;
 }
-
-.search {
-    grid-area: s;
-}
-
-input {
-    border: none;
-    border-radius: 5px;
-    padding: 7px 10px;
+.auth{
+    color: #ffffff;
 }
